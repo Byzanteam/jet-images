@@ -2,8 +2,8 @@ name: postgres-zhparser builder
 
 on:
   push:
-    paths:
-      - 'postgres-zhparser/VERSION'
+    branches:
+      - master
 
 env:
   IMAGE_NAME: postgres-zhparser-alpine
@@ -38,5 +38,5 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          docker tag image $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          docker tag image $IMAGE_ID:$VERSION $IMAGE_ID:latest
+          docker push $IMAGE_ID:$VERSION $IMAGE_ID:latest
