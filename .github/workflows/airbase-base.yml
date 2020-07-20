@@ -1,4 +1,4 @@
-name: airbas-base image builder
+name: airbase-base image builder
 
 on:
   pull_request:
