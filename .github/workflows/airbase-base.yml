@@ -1,4 +1,4 @@
-name: postgres-zhparser builder
+name: airbas-base image builder
 
 on:
   pull_request:
@@ -6,10 +6,10 @@ on:
       - master
   push:
     paths:
-      - 'postgres-zhparser/**'
+      - 'airbase-base/**'
 
 env:
-  IMAGE_NAME: postgres-zhparser-alpine
+  IMAGE_NAME: airbase-base
 
 jobs:
   # Push image to GitHub Packages.
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        working-directory: postgres-zhparser
+        working-directory: airbase-base
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
@@ -29,7 +29,7 @@ jobs:
 
       - name: Push image
         if: github.ref== 'refs/heads/master'
-        working-directory: postgres-zhparser
+        working-directory: airbase-base
         run: |
           IMAGE_ID=byzanteam/$IMAGE_NAME
 
