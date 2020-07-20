@@ -1,6 +1,9 @@
 name: postgres-zhparser builder
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     paths:
       - 'postgres-zhparser/**'

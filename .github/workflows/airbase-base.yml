@@ -1,6 +1,9 @@
 name: airbas-base image builder
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     paths:
       - 'airbase-base/**'
