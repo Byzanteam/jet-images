@@ -1,6 +1,6 @@
-FROM postgres:10.12-alpine
+FROM postgres:13.2-alpine
 
-ENV VERSION 10.12_zhparser-0.2.0
+ENV VERSION 13.2_zhparser-0.2.0
 
 ENV SCWS_VERSION 1.2.3
 ENV ZHPARSER_VERSION 0.2.0
