@@ -1,6 +1,6 @@
-FROM hexpm/elixir:1.11.3-erlang-23.1-alpine-3.12.1
+FROM hexpm/elixir:1.12.1-erlang-24.0.2-alpine-3.13.3
 
-ENV VERSION elixir-1.11.3-erlang-23.1-rust-1.49.0-alpine-3.12.1
+ENV VERSION elixir-1.12.1-erlang-24.0.2-rust-1.49.0-alpine-3.13.3
 
 ## Start Rust installation
 # Copy from https://github.com/rust-lang/docker-rust/blob/a035f6fa1f14754bab8f34376c386fafc831b652/1.49.0/buster/Dockerfile
