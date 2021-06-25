@@ -1,9 +1,9 @@
 FROM hexpm/elixir:1.12.1-erlang-24.0.2-alpine-3.13.3
 
-ENV VERSION elixir-1.12.1-erlang-24.0.2-rust-1.49.0-alpine-3.13.3
+ENV VERSION elixir-1.12.1-erlang-24.0.2-rust-1.53.0-alpine-3.13.3
 
 ## Start Rust installation
-# Copy from https://github.com/rust-lang/docker-rust/blob/a035f6fa1f14754bab8f34376c386fafc831b652/1.49.0/buster/Dockerfile
+# Copy from https://github.com/rust-lang/docker-rust/blob/e9fa22548981365ced90bc22d9173e2cf6b96890/1.53.0/alpine3.13/Dockerfile
 RUN apk add --no-cache \
         ca-certificates \
         gcc
@@ -11,16 +11,16 @@ RUN apk add --no-cache \
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=1.49.0
+    RUST_VERSION=1.53.0
 
 RUN set -eux; \
     apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
-        x86_64) rustArch='x86_64-unknown-linux-musl'; rustupSha256='05c5c05ec76671d73645aac3afbccf2187352fce7e46fc85be859f52a42797f6' ;; \
-        aarch64) rustArch='aarch64-unknown-linux-musl'; rustupSha256='6a8a480d8d9e7f8c6979d7f8b12bc59da13db67970f7b13161ff409f0a771213' ;; \
+        x86_64) rustArch='x86_64-unknown-linux-musl'; rustupSha256='bdf022eb7cba403d0285bb62cbc47211f610caec24589a72af70e1e900663be9' ;; \
+        aarch64) rustArch='aarch64-unknown-linux-musl'; rustupSha256='89ce657fe41e83186f5a6cdca4e0fd40edab4fd41b0f9161ac6241d49fbdbbbe' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
-    url="https://static.rust-lang.org/rustup/archive/1.23.1/${rustArch}/rustup-init"; \
+    url="https://static.rust-lang.org/rustup/archive/1.24.3/${rustArch}/rustup-init"; \
     wget "$url"; \
     echo "${rustupSha256} *rustup-init" | sha256sum -c -; \
     chmod +x rustup-init; \
