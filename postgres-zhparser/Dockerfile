@@ -6,7 +6,7 @@ ENV SCWS_VERSION 1.2.3
 ENV ZHPARSER_VERSION e909539a0d9b87b69acd76d4d3a3b073095bf5a5
 
 RUN set -eux \
-      && apk add --quiet --purge --no-cache --virtual .build-deps curl gcc g++ autoconf libtool automake make clang-dev llvm10-dev \
+      && apk add --quiet --purge --no-cache --virtual .build-deps curl gcc g++ autoconf libtool automake make clang-dev llvm11-dev \
       && mkdir -p /usr/src/packages \
       \
 # build scws
