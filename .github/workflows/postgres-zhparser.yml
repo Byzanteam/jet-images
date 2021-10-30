@@ -36,17 +36,11 @@ jobs:
         working-directory: postgres-zhparser
         run: echo "VERSION=$(awk -F " " '/ENV VERSION/ { print $3 }' Dockerfile)" >> $GITHUB_ENV
 
-      - name: Build the image
+      - name: Build and push the image
         working-directory: postgres-zhparser
         run: |
           docker buildx build \
+            --output=type=image,push=${{ github.ref == 'refs/heads/master' && 'true' || 'false' }} \
             --tag byzanteam/$IMAGE_NAME:latest \
             --tag byzanteam/$IMAGE_NAME:$VERSION \
             --platform linux/amd64,linux/arm/v7,linux/arm64 .
-
-      - name: Push the image
-        if: github.ref== 'refs/heads/master'
-        run: |
-          docker push \
-            byzanteam/$IMAGE_NAME:latest \
-            byzanteam/$IMAGE_NAME:$VERSION \
